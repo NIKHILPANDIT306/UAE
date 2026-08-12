@@ -23,21 +23,17 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      <header className="dashboard-header">
-        <div className="header-content">
-          <h1>UAE Pass Portal</h1>
-          <button type="button" className="btn btn-outline" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </header>
-
       <main className="dashboard-main">
         <div className="welcome-card">
-          <h2>
-            Welcome, {user?.firstName || user?.email}!
-          </h2>
-          <p className="subtitle">You are successfully authenticated.</p>
+          <div>
+            <h2>
+              Welcome, {user?.firstName || user?.email}!
+            </h2>
+            <p className="subtitle">You are successfully authenticated.</p>
+          </div>
+          <button type="button" className="btn btn-logout" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
 
         <div className="profile-card">

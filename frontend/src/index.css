@@ -30,6 +30,46 @@ body {
   min-height: 100vh;
 }
 
+#root,
+.app-shell {
+  min-height: 100vh;
+}
+
+/* Shared branding */
+.brand-header {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.brand-header-content {
+  width: 100%;
+  min-height: 82px;
+  padding: 0.9rem clamp(1.25rem, 4vw, 4.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-logo-council {
+  height: 52px;
+  max-width: min(46vw, 342px);
+}
+
+.brand-logo-nfr {
+  height: 38px;
+  max-width: min(36vw, 280px);
+}
+
 a {
   color: var(--primary);
   text-decoration: none;
@@ -41,7 +81,7 @@ a:hover {
 
 /* Auth pages */
 .auth-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 82px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,6 +96,10 @@ a:hover {
   padding: 2.5rem;
   width: 100%;
   max-width: 440px;
+}
+
+.auth-card-wide {
+  max-width: 560px;
 }
 
 .auth-header {
@@ -91,6 +135,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  min-width: 0;
 }
 
 .form-group label {
@@ -100,6 +145,8 @@ a:hover {
 }
 
 .form-group input {
+  width: 100%;
+  min-width: 0;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -244,7 +291,7 @@ a:hover {
 
 /* Loading */
 .loading-screen {
-  min-height: 100vh;
+  min-height: calc(100vh - 82px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -268,40 +315,26 @@ a:hover {
 
 /* Dashboard */
 .dashboard-page {
-  min-height: 100vh;
-}
-
-.dashboard-header {
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem;
-}
-
-.header-content {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.dashboard-header h1 {
-  font-size: 1.25rem;
-  color: var(--primary);
+  min-height: calc(100vh - 82px);
+  background: #f3f7fb;
 }
 
 .dashboard-main {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
 }
 
 .welcome-card {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
-  padding: 2rem;
+  padding: 2rem 2.25rem;
   border-radius: var(--radius);
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .welcome-card h2 {
@@ -314,11 +347,26 @@ a:hover {
   font-size: 0.95rem;
 }
 
+.btn-logout {
+  width: auto;
+  flex: 0 0 auto;
+  padding: 0.7rem 1.25rem;
+  background: #fff;
+  color: var(--primary-dark);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 2px 8px rgba(0, 40, 80, 0.15);
+}
+
+.btn-logout:hover:not(:disabled) {
+  background: #edf6fd;
+  color: var(--primary-dark);
+}
+
 .profile-card {
   background: var(--card-bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 2rem;
+  padding: 2rem 2.25rem;
 }
 
 .profile-card h3 {
@@ -361,11 +409,50 @@ a:hover {
   font-weight: 600;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .brand-header-content {
+    min-height: 66px;
+    padding: 0.7rem 1rem;
+    gap: 1rem;
+  }
+
+  .brand-logo-council {
+    height: 38px;
+  }
+
+  .brand-logo-nfr {
+    height: 28px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
 
+  .auth-card-wide {
+    max-width: 440px;
+  }
+
+  .dashboard-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .dashboard-main {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .welcome-card,
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .welcome-card {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
   .auth-card {
     padding: 1.5rem;
   }
